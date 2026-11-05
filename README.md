@@ -27,8 +27,10 @@ downloads/          put the installers here (if you host them with the site)
 4. Paste each link into `config.js`, for example:
 
 ```js
-wallora: { url: "https://github.com/YOUR-NAME/wallora/releases/download/v1.1.0/Wallora-1.1.0-x64.exe" },
+wallora: { url: "https://github.com/Wealthometer/wallora/releases/download/v1.1.0/Wallora-1.1.0-x64.exe" },
 ```
+
+**Option C: Git LFS.** This repository tracks `.apk` and `.exe` files in `downloads/` with Git LFS. Install Git LFS and run `git lfs install`, then add the attributes and downloads (`git add .gitattributes downloads/`) so Git stores them as LFS objects before committing and pushing. Git LFS has separate storage and bandwidth quotas.
 
 ## 2. Put the site online
 
