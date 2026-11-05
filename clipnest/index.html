@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClipNest: Everything you copy, found again.</title>
+<meta name="description" content="ClipNest: a fast clipboard manager for Windows. Clipboard history, search, snippets, folders, pins, images, quick paste with Ctrl+Alt+V and optional encryption.">
+<meta property="og:title" content="ClipNest: Everything you copy, found again.">
+<meta property="og:description" content="ClipNest: a fast clipboard manager for Windows. Clipboard history, search, snippets, folders, pins, images, quick paste with Ctrl+Alt+V and optional encryption.">
+<meta property="og:image" content="img/history-dark.jpg">
+<meta name="theme-color" content="#FFE45C">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..800&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+:root{--bg:#0E0E10;--bg-2:#09090B;--surface:#16161A;--text:#EDEDEF;--muted:#A1A1AA;--line:rgba(255,255,255,.08);--accent:#FFE45C;--accent-ink:#1A1600;--accent-2:#B89CFF;--accent-2-ink:#140A2A;--radius:16px;--font-display:"Geist",sans-serif;--font-body:"Geist",sans-serif;--display-tracking:-0.05em;--btn-radius:12px;--star-bg:#16161A}
+.hl{background:linear-gradient(104deg,transparent 1%,#FFE45C 3%,#FFE45Cdd 94%,transparent 97%);color:#1A1600;padding:0 .15em;border-radius:.2em;background-size:0% 100%;background-repeat:no-repeat;animation:swipe 1.1s .5s cubic-bezier(.2,1,.3,1) forwards;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+@keyframes swipe{to{background-size:100% 100%}}
+.feature.star h3 .hl{animation-delay:0s}
+.c-hero{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+.keys{display:flex;gap:10px;margin-top:34px}
+.key{min-width:62px;height:58px;padding:0 16px;display:grid;place-items:center;border-radius:12px;background:#1D1D22;border:1px solid rgba(255,255,255,.14);border-bottom-width:5px;font:600 17px "Geist Mono",monospace;color:#EDEDEF;animation:press 3s infinite}
+.key:nth-child(2){animation-delay:.12s}.key:nth-child(3){animation-delay:.24s}
+@keyframes press{0%,60%,100%{transform:none;border-bottom-width:5px;background:#1D1D22}70%,80%{transform:translateY(3px);border-bottom-width:2px;background:#FFE45C;color:#1A1600}}
+.c-stage{position:relative}
+.c-stage .window{transform:perspective(1600px) rotateY(-9deg) rotateX(3deg);transform-origin:left center}
+.quick{position:absolute;right:-10px;bottom:-40px;width:56%;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px #FFE45C55,0 40px 80px -20px #000;animation:pop 4s ease-in-out infinite}
+@keyframes pop{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.kinds{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.kinds span{padding:4px 10px;border-radius:8px;font:600 12.5px "Geist Mono",monospace;border:1px solid}
+@media(max-width:980px){.c-hero{grid-template-columns:1fr}.c-stage .window{transform:none}}
+</style>
+</head>
+<body class="p-clipnest" data-platform="windows">
+<header class="nav">
+  <div class="wrap">
+    <a class="back" href="../" aria-label="All apps"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span>All apps</span></a>
+    <a class="brand" href="#top"><img src="img/icon.png" alt="">ClipNest</a>
+    <nav class="nav-links"><a href="#features">Features</a><a href="#screens">Screenshots</a><a href="#install">Install</a></nav>
+    <a class="btn primary small" href="../downloads/ClipNest_1.0.0_x64-setup.exe" data-download="clipnest"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg> Download</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+<div class="wrap c-hero">
+  <div>
+    <span class="eyebrow"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Clipboard manager for Windows</span>
+    <h1>Everything you copy, <span class="hl">found again.</span></h1>
+    <p class="lead">ClipNest sits in your tray and remembers every piece of text and every picture you copy. Press three keys anywhere, type a few letters, and it's pasted back.</p>
+    <div class="keys" aria-hidden="true"><span class="key">Ctrl</span><span class="key">Alt</span><span class="key">V</span></div>
+    
+    <div class="cta-row">
+      <a class="btn primary" href="../downloads/ClipNest_1.0.0_x64-setup.exe" data-download="clipnest">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span class="btn-text">Download for Windows<span class="sub">Installer (.exe) · v1.0.0 · 2 MB</span></span>
+      </a>
+      <a class="btn" href="#screens"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg> See screenshots</a>
+    </div>
+    <p class="fine">Windows 10 & 11, 64-bit · Free · Not code-signed yet (here's how to install ↓)</p>
+    <div class="platform-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span></span></div>
+  </div>
+  <div class="c-stage reveal" aria-hidden="true">
+    <div class="window"><div class="bar"><i></i><i></i><i></i><span>ClipNest</span></div><img src="img/history-dark.jpg" alt=""></div>
+    <div class="quick"><img src="img/quick-paste.jpg" alt=""></div>
+    <div class="kinds">
+      <span style="color:#73C2FF">link</span><span style="color:#B89CFF">code</span><span style="color:#FF94C8">email</span><span style="color:#6EF0A8">number</span><span style="color:#5EE6E0">path</span><span style="color:#FFB25C">image</span><span style="color:#FFE45C">#colour</span>
+    </div>
+  </div>
+</div></section>
+
+<div class="wrap reveal">
+  <div class="facts"><div class="fact"><b>2 MB</b><span>Tiny installer, built in Rust</span></div><div class="fact"><b>Ctrl Alt V</b><span>Quick paste anywhere</span></div><div class="fact"><b>Private</b><span>Nothing leaves your PC</span></div><div class="fact"><b>Encrypted</b><span>Optional, AES-grade</span></div></div>
+</div>
+
+<section class="block" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">What it does</span><h2>Your clipboard, with a memory.</h2></div>
+      <p>A fast clipboard manager for Windows. Clipboard history, search, snippets, folders, pins, images, quick paste with Ctrl+Alt+V and optional encryption.</p>
+    </div>
+    <div class="features">
+      <article class="feature reveal star"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></span><h3>Search everything you copied</h3><p>Full-text search across your whole history with highlighted matches, and filters for today, 3 days, this week or 30 days. That thing you copied last Tuesday is three letters away.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8h.01"/><path d="M12 12h.01"/><path d="M14 8h.01"/><path d="M16 12h.01"/><path d="M18 8h.01"/><path d="M6 8h.01"/><path d="M7 16h10"/><path d="M8 12h.01"/><rect width="20" height="16" x="2" y="4" rx="2"/></svg></span><h3>Quick paste, anywhere</h3><p>Ctrl Alt V opens a little window over any app. Type, press Enter, and it's pasted where you were.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg></span><h3>Snippets</h3><p>Save text you type again and again, with keywords and placeholders like {date} and {clipboard}.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg></span><h3>Pins and folders</h3><p>Keep the clips that matter. Pinned clips and clips in folders are never cleaned up.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span><h3>Text and pictures</h3><p>Every kind of clip gets its own preview: links, colours, code with line numbers, file paths, images.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><h3>Private by default</h3><p>Passwords, API keys and card numbers are spotted and skipped. Optional encryption for the rest.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="screens">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">Screenshots</span><h2>See it before you install it.</h2></div>
+      <div class="gallery-nav"><button data-gallery-prev="g" aria-label="Previous screenshots"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button><button data-gallery-next="g" aria-label="Next screenshots"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button></div>
+    </div>
+    <div class="gallery desktop" id="g">
+      <figure><button data-zoom="img/history-dark.jpg" aria-label="Enlarge: Your clipboard history, sorted by kind"><div class="window"><div class="bar"><i></i><i></i><i></i><span>ClipNest</span></div><img src="img/history-dark.jpg" alt="Your clipboard history, sorted by kind" loading="lazy"></div></button><figcaption>Your clipboard history, sorted by kind</figcaption></figure>
+      <figure><button data-zoom="img/search.jpg" aria-label="Enlarge: Search with highlighter-swipe matches"><div class="window"><div class="bar"><i></i><i></i><i></i><span>ClipNest</span></div><img src="img/search.jpg" alt="Search with highlighter-swipe matches" loading="lazy"></div></button><figcaption>Search with highlighter-swipe matches</figcaption></figure>
+      <figure><button data-zoom="img/quick-paste.jpg" aria-label="Enlarge: Quick paste over any app"><div class="window"><div class="bar"><i></i><i></i><i></i><span>ClipNest</span></div><img src="img/quick-paste.jpg" alt="Quick paste over any app" loading="lazy"></div></button><figcaption>Quick paste over any app</figcaption></figure>
+      <figure><button data-zoom="img/code.jpg" aria-label="Enlarge: Code clips, with line numbers"><div class="window"><div class="bar"><i></i><i></i><i></i><span>ClipNest</span></div><img src="img/code.jpg" alt="Code clips, with line numbers" loading="lazy"></div></button><figcaption>Code clips, with line numbers</figcaption></figure>
+      <figure><button data-zoom="img/colour.jpg" aria-label="Enlarge: Colours in every format"><div class="window"><div class="bar"><i></i><i></i><i></i><span>ClipNest</span></div><img src="img/colour.jpg" alt="Colours in every format" loading="lazy"></div></button><figcaption>Colours in every format</figcaption></figure>
+      <figure><button data-zoom="img/snippets.jpg" aria-label="Enlarge: Snippets with placeholders"><div class="window"><div class="bar"><i></i><i></i><i></i><span>ClipNest</span></div><img src="img/snippets.jpg" alt="Snippets with placeholders" loading="lazy"></div></button><figcaption>Snippets with placeholders</figcaption></figure>
+      <figure><button data-zoom="img/locked.jpg" aria-label="Enlarge: Optional encryption"><div class="window"><div class="bar"><i></i><i></i><i></i><span>ClipNest</span></div><img src="img/locked.jpg" alt="Optional encryption" loading="lazy"></div></button><figcaption>Optional encryption</figcaption></figure>
+      <figure><button data-zoom="img/settings.jpg" aria-label="Enlarge: Shortcuts, privacy and more"><div class="window"><div class="bar"><i></i><i></i><i></i><span>ClipNest</span></div><img src="img/settings.jpg" alt="Shortcuts, privacy and more" loading="lazy"></div></button><figcaption>Shortcuts, privacy and more</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="install">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">Install</span><h2>Up and running in a minute.</h2></div>
+      <p>ClipNest comes as a standard Windows installer. Here's the one extra click you'll need.</p>
+    </div>
+    <div class="install">
+      <ol class="steps reveal"><li><div><b>Download the installer</b><span>Click the button to get <span class="mono">ClipNest_1.0.0_x64-setup.exe</span>.</span></div></li><li><div><b>Get past SmartScreen</b><span>The installer isn't code-signed yet, so Windows may say it “protected your PC”. Click More info, then Run anyway.</span></div></li><li><div><b>Install and go</b><span>Follow the installer. ClipNest lands in your Start menu, and you can pin it to the taskbar.</span></div></li></ol>
+      <aside class="side-card reveal">
+        <h3>What you need</h3>
+        <ul class="req"><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Windows 10 or 11, 64-bit</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Microsoft Edge WebView2 (already on Windows 11; the installer adds it on 10 if needed)</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>About 15 MB free space</span></li></ul>
+        <div>
+          <b style="font-size:14px">SHA-256 of ClipNest_1.0.0_x64-setup.exe</b>
+          <div class="hash mono" style="margin-top:8px"><span>a29c595be811d583252d2a6a310874ba11ec0f1f154b071c2848130736c5fa51</span><button data-copy="a29c595be811d583252d2a6a310874ba11ec0f1f154b071c2848130736c5fa51">Copy</button></div>
+        </div>
+        <div>
+          <b style="font-size:14px">Built with</b>
+          <div class="stack" style="margin-top:10px"><span>Tauri 2</span><span>Rust</span><span>SQLite FTS5</span><span>React 19</span><span>TypeScript</span></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="final reveal">
+      <h2>Never lose a copy again.</h2>
+      <p>Everything you copy, found again. Free, v1.0.0, 2 MB.</p>
+      <div class="cta-row"><a class="btn primary" href="../downloads/ClipNest_1.0.0_x64-setup.exe" data-download="clipnest"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span class="btn-text">Download ClipNest<span class="sub">for Windows · 2 MB</span></span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>ClipNest · made by Wealth Hajoh</span>
+    <div class="others"><a href="../flowtask/"><img src="../flowtask/img/icon.png" alt="">FlowTask</a><a href="../stockpilot/"><img src="../stockpilot/img/icon.png" alt="">StockPilot</a><a href="../scanly/"><img src="../scanly/img/icon.png" alt="">Scanly</a><a href="../wallora/"><img src="../wallora/img/icon.png" alt="">Wallora</a><a href="../sortify/"><img src="../sortify/img/icon.png" alt="">Sortify</a><a href="../mediavault/"><img src="../mediavault/img/icon.png" alt="">MediaVault</a></div>
+  </div>
+</footer>
+<script src="../config.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

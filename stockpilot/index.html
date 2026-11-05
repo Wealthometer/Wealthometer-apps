@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StockPilot: Stock control for small shops, run from your phone.</title>
+<meta name="description" content="StockPilot: inventory for small shops on Android. Scan barcodes, sell and receive, count shelves, reorder from suppliers, see profit. Offline, no account.">
+<meta property="og:title" content="StockPilot: Stock control for small shops, run from your phone.">
+<meta property="og:description" content="StockPilot: inventory for small shops on Android. Scan barcodes, sell and receive, count shelves, reorder from suppliers, see profit. Offline, no account.">
+<meta property="og:image" content="img/home.png">
+<meta name="theme-color" content="#1F7A63">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500..900&family=Inter:wght@400..700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+:root{--bg:#F3F5F2;--bg-2:#E8EEEA;--surface:#FFFFFF;--text:#10241E;--muted:#5A6B65;--line:#DCE4E0;--accent:#1F7A63;--accent-ink:#fff;--accent-2:#F5B547;--accent-2-ink:#2A1D05;--radius:20px;--card-border:1px solid #DCE4E0;--card-shadow:0 1px 0 #DCE4E0,0 20px 40px -30px rgba(16,36,30,.35);--font-display:"Schibsted Grotesk",sans-serif;--font-body:"Inter",sans-serif;--display-tracking:-0.04em;--final-bg:#10241E;--btn-shadow:0 14px 30px -14px #1F7A63}
+body{background-image:linear-gradient(#E3EAE6 1px,transparent 1px),linear-gradient(90deg,#E3EAE6 1px,transparent 1px);background-size:44px 44px;background-attachment:fixed}
+.nav{background:rgba(243,245,242,.85)}
+.final{color:#F3F5F2}.final p{color:#B5C7C0}.final .btn.primary{background:#F5B547;color:#2A1D05;box-shadow:none}
+.s-hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.s-hero h1 .tick{color:#1F7A63}
+.s-board{position:relative;height:610px}
+.s-board .phone{position:absolute;left:50%;top:0;transform:translateX(-50%);width:270px;z-index:2}
+.tile{position:absolute;z-index:3;padding:16px 18px;min-width:180px;border-radius:18px;background:#fff;border:1px solid #DCE4E0;box-shadow:0 24px 50px -24px rgba(16,36,30,.45)}
+.tile small{display:block;font-size:12.5px;color:#5A6B65;font-weight:600}
+.tile b{display:block;font:800 28px "IBM Plex Mono",monospace;letter-spacing:-0.03em;color:#10241E}
+.tile .up{font-size:12.5px;font-weight:700;color:#1F7A63}
+.t1{left:0;top:70px}.t2{right:0;top:220px}.t3{left:4%;bottom:60px}
+.t3 b{color:#C2410C}
+.barcode{display:flex;gap:2px;height:40px;margin-top:8px}.barcode i{background:#10241E;width:2px}.barcode i:nth-child(3n){width:4px}.barcode i:nth-child(5n){width:1px}
+.laser{position:absolute;left:8%;right:8%;height:2px;background:#F97066;box-shadow:0 0 12px #F97066;top:50%;animation:sweep 2.4s ease-in-out infinite}
+@keyframes sweep{0%,100%{transform:translateY(-14px)}50%{transform:translateY(14px)}}
+.t3 .rel{position:relative}
+@media(max-width:980px){.s-hero{grid-template-columns:1fr}}
+@media(max-width:600px){.tile{display:none}}
+</style>
+</head>
+<body class="p-stockpilot" data-platform="android">
+<header class="nav">
+  <div class="wrap">
+    <a class="back" href="../" aria-label="All apps"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span>All apps</span></a>
+    <a class="brand" href="#top"><img src="img/icon.png" alt="">StockPilot</a>
+    <nav class="nav-links"><a href="#features">Features</a><a href="#screens">Screenshots</a><a href="#install">Install</a></nav>
+    <a class="btn primary small" href="../downloads/stockpilot.apk" data-download="stockpilot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg> Download</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+<div class="wrap s-hero">
+  <div>
+    <span class="eyebrow"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg> For corner shops, boutiques and stalls</span>
+    <h1>Know what's on the shelf<span class="tick">.</span> Always.</h1>
+    <p class="lead">Scan a barcode to sell, receive or count. See what's running low and order it in a tap. Everything stays on your phone, and it works offline.</p>
+    
+    <div class="cta-row">
+      <a class="btn primary" href="../downloads/stockpilot.apk" data-download="stockpilot">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span class="btn-text">Download for Android<span class="sub">APK · v1.0.0 · 118 MB</span></span>
+      </a>
+      <a class="btn" href="#screens"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg> See screenshots</a>
+    </div>
+    <p class="fine">Android 8.0+ · Free · Installs outside the Play Store (here's how ↓)</p>
+    <div class="platform-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span></span></div>
+  </div>
+  <div class="s-board" aria-hidden="true">
+    <div class="tile t1"><small>Stock value (at cost)</small><b data-count="738.63">$738.63</b><span class="up">251 units</span></div>
+    <div class="tile t2"><small>Sales, last 7 days</small><b data-count="693.88">$693.88</b><span class="up">▲ Today $91.86</span></div>
+    <div class="tile t3"><small>Scanning…</small><div class="rel"><div class="barcode"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="laser"></span></div></div>
+    <div class="phone"><img src="img/home.png" alt=""></div>
+  </div>
+</div></section>
+
+<div class="wrap reveal">
+  <div class="facts"><div class="fact"><b>Android</b><span>APK · v1.0.0</span></div><div class="fact"><b>Offline</b><span>Everything stays on the phone</span></div><div class="fact"><b>No account</b><span>Open it and start</span></div><div class="fact"><b>9 code types</b><span>EAN, UPC, Code 128, QR…</span></div></div>
+</div>
+
+<section class="block" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">What it does</span><h2>Your stockroom, in your pocket.</h2></div>
+      <p>Inventory for small shops on Android. Scan barcodes, sell and receive, count shelves, reorder from suppliers, see profit. Offline, no account.</p>
+    </div>
+    <div class="features">
+      <article class="feature reveal star"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5v14"/><path d="M8 5v14"/><path d="M12 5v14"/><path d="M17 5v14"/><path d="M21 5v14"/></svg></span><h3>Scan to do anything</h3><p>Point the camera at a barcode to find, sell or receive a product. A torch for dark shelves, and no double counts.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg></span><h3>Every movement counts</h3><p>Sell, receive, move between locations, write off, returns. Every change leaves a balance, so stock always adds up.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span><h3>Reorder in a tap</h3><p>See what's running low and turn it into one purchase order per supplier, sent as a message.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span><h3>Stock counts</h3><p>Count a shelf or a whole location by scanning. Sales during the count aren't mistaken for losses.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span><h3>Know your numbers</h3><p>Sales, profit and margin, best sellers, stock value by category, and what hasn't sold.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg></span><h3>Mistakes are fixable</h3><p>Undo a sale or delivery from the product's history. Back up and restore to a new phone.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="screens">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">Screenshots</span><h2>See it before you install it.</h2></div>
+      <div class="gallery-nav"><button data-gallery-prev="g" aria-label="Previous screenshots"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button><button data-gallery-next="g" aria-label="Next screenshots"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button></div>
+    </div>
+    <div class="gallery mobile" id="g">
+      <figure><button data-zoom="img/home.png" aria-label="Enlarge: Stock value, sales and what's low, at a glance"><div class="phone"><img src="img/home.png" alt="Stock value, sales and what's low, at a glance" loading="lazy"></div></button><figcaption>Stock value, sales and what's low, at a glance</figcaption></figure>
+      <figure><button data-zoom="img/scan.png" aria-label="Enlarge: Scan a barcode to sell or receive"><div class="phone"><img src="img/scan.png" alt="Scan a barcode to sell or receive" loading="lazy"></div></button><figcaption>Scan a barcode to sell or receive</figcaption></figure>
+      <figure><button data-zoom="img/product.png" aria-label="Enlarge: A product with stock in every location"><div class="phone"><img src="img/product.png" alt="A product with stock in every location" loading="lazy"></div></button><figcaption>A product with stock in every location</figcaption></figure>
+      <figure><button data-zoom="img/products.png" aria-label="Enlarge: Search and filter your whole catalogue"><div class="phone"><img src="img/products.png" alt="Search and filter your whole catalogue" loading="lazy"></div></button><figcaption>Search and filter your whole catalogue</figcaption></figure>
+      <figure><button data-zoom="img/sell.png" aria-label="Enlarge: Sell with live before-and-after stock"><div class="phone"><img src="img/sell.png" alt="Sell with live before-and-after stock" loading="lazy"></div></button><figcaption>Sell with live before-and-after stock</figcaption></figure>
+      <figure><button data-zoom="img/count.png" aria-label="Enlarge: Count a shelf, scan by scan"><div class="phone"><img src="img/count.png" alt="Count a shelf, scan by scan" loading="lazy"></div></button><figcaption>Count a shelf, scan by scan</figcaption></figure>
+      <figure><button data-zoom="img/reorder.png" aria-label="Enlarge: Reorder what's running low"><div class="phone"><img src="img/reorder.png" alt="Reorder what's running low" loading="lazy"></div></button><figcaption>Reorder what's running low</figcaption></figure>
+      <figure><button data-zoom="img/reports.png" aria-label="Enlarge: Sales, profit and best sellers"><div class="phone"><img src="img/reports.png" alt="Sales, profit and best sellers" loading="lazy"></div></button><figcaption>Sales, profit and best sellers</figcaption></figure>
+      <figure><button data-zoom="img/home-dark.png" aria-label="Enlarge: And a dark mode"><div class="phone"><img src="img/home-dark.png" alt="And a dark mode" loading="lazy"></div></button><figcaption>And a dark mode</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="install">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">Install</span><h2>Up and running in a minute.</h2></div>
+      <p>StockPilot isn't on the Play Store yet, so you install the APK directly. It takes three taps.</p>
+    </div>
+    <div class="install">
+      <ol class="steps reveal"><li><div><b>Download the APK</b><span>Tap the button on your Android phone. You'll get <span class="mono">stockpilot.apk</span>.</span></div></li><li><div><b>Allow the install</b><span>Android asks before installing apps from outside the Play Store. Tap Settings, allow your browser (or Files app) to install apps, then go back.</span></div></li><li><div><b>Open and install</b><span>Open the file from your notifications or Downloads and tap Install. Play Protect may ask you to confirm: choose “Install anyway”. Then open StockPilot.</span></div></li></ol>
+      <aside class="side-card reveal">
+        <h3>What you need</h3>
+        <ul class="req"><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Android 8.0 or newer</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A camera for barcode scanning (typing codes works too)</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>About 130 MB free space</span></li></ul>
+        <div>
+          <b style="font-size:14px">SHA-256 of stockpilot.apk</b>
+          <div class="hash mono" style="margin-top:8px"><span>2c23c85bec779926def5895a11f9cc971268f86105e67e23a03537b7adc236ad</span><button data-copy="2c23c85bec779926def5895a11f9cc971268f86105e67e23a03537b7adc236ad">Copy</button></div>
+        </div>
+        <div>
+          <b style="font-size:14px">Built with</b>
+          <div class="stack" style="margin-top:10px"><span>Expo SDK 58</span><span>React Native 0.88</span><span>Expo Router</span><span>SQLite</span><span>Expo Camera</span></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="final reveal">
+      <h2>Count less. Sell more.</h2>
+      <p>Stock control for small shops, run from your phone. Free, v1.0.0, 118 MB.</p>
+      <div class="cta-row"><a class="btn primary" href="../downloads/stockpilot.apk" data-download="stockpilot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span class="btn-text">Download StockPilot<span class="sub">for Android · 118 MB</span></span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>StockPilot · made by Wealth Hajoh</span>
+    <div class="others"><a href="../flowtask/"><img src="../flowtask/img/icon.png" alt="">FlowTask</a><a href="../scanly/"><img src="../scanly/img/icon.png" alt="">Scanly</a><a href="../wallora/"><img src="../wallora/img/icon.png" alt="">Wallora</a><a href="../clipnest/"><img src="../clipnest/img/icon.png" alt="">ClipNest</a><a href="../sortify/"><img src="../sortify/img/icon.png" alt="">Sortify</a><a href="../mediavault/"><img src="../mediavault/img/icon.png" alt="">MediaVault</a></div>
+  </div>
+</footer>
+<script src="../config.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

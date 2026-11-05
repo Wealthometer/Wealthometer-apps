@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en" data-root="./">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apps by Wealth Hajoh</title>
+    <meta name="description" content="Seven apps, ready to install: FlowTask, StockPilot and Scanly for Android; Wallora, ClipNest, Sortify and MediaVault for Windows.">
+    <meta name="theme-color" content="#0B0B0E">
+    <link rel="icon" href="mediavault/img/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500..900&family=Inter:wght@400..700&display=swap">
+    <link rel="stylesheet" href="assets/base.css">
+    <style>
+         :root {
+            --bg: #0B0B0E;
+            --surface: #141418;
+            --text: #F5F5F7;
+            --muted: #A1A1AA;
+            --line: rgba(255, 255, 255, .08);
+            --accent: #F5F5F7;
+            --accent-ink: #0B0B0E;
+            --font-display: "Unbounded", sans-serif;
+            --font-body: "Inter", sans-serif;
+            --display-tracking: -0.04em
+        }
+        
+        body {
+            background: #0B0B0E
+        }
+        
+        .orbs span {
+            position: fixed;
+            z-index: -1;
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            filter: blur(110px);
+            opacity: .28;
+            animation: drift 22s ease-in-out infinite alternate
+        }
+        
+        .orbs span:nth-child(1) {
+            background: #FF7A1A;
+            left: -120px;
+            top: -120px
+        }
+        
+        .orbs span:nth-child(2) {
+            background: #8B5CF6;
+            right: -160px;
+            top: 20%;
+            animation-delay: -7s
+        }
+        
+        .orbs span:nth-child(3) {
+            background: #C6FF3D;
+            left: 30%;
+            bottom: -260px;
+            opacity: .16;
+            animation-delay: -14s
+        }
+        
+        @keyframes drift {
+            to {
+                transform: translate(80px, 60px) scale(1.15)
+            }
+        }
+        
+        .h-hero {
+            padding: 96px 0 40px
+        }
+        
+        .h-hero h1 {
+            font-size: clamp(44px, 7.4vw, 104px);
+            font-weight: 800;
+            line-height: .98
+        }
+        
+        .h-hero h1 .grad {
+            background: linear-gradient(90deg, #FF7A1A, #FFE45C, #C6FF3D, #7EB6FF, #B89CFF, #FF4B2B);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% 100%;
+            animation: shift 8s linear infinite
+        }
+        
+        @keyframes shift {
+            to {
+                background-position: 200% 0
+            }
+        }
+        
+        .h-hero .lead {
+            margin-top: 22px
+        }
+        
+        .group-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 64px 0 22px;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.03em
+        }
+        
+        .group-title span {
+            font: 500 14px var(--font-body);
+            color: var(--muted);
+            letter-spacing: 0
+        }
+        
+        .grid {
+            display: grid;
+            gap: 20px
+        }
+        
+        .grid.three {
+            grid-template-columns: repeat(3, 1fr)
+        }
+        
+        .grid.four {
+            grid-template-columns: repeat(4, 1fr)
+        }
+        
+        .grid.four .app .shot {
+            height: 190px
+        }
+        
+        .grid.four .app h2 {
+            font-size: 21px
+        }
+        
+        @media(max-width:1100px) {
+            .grid.four {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+        
+        @media(max-width:900px) {
+            .grid.three {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+        
+        @media(max-width:620px) {
+            .grid.three,
+            .grid.four {
+                grid-template-columns: 1fr
+            }
+            .group-title {
+                font-size: 22px;
+                flex-wrap: wrap
+            }
+            .group-title span {
+                flex-basis: 100%;
+                margin-left: 36px;
+                margin-top: -6px
+            }
+        }
+        
+        .app {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border-radius: 26px;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            text-decoration: none;
+            transition: transform .35s cubic-bezier(.2, 1, .3, 1), box-shadow .35s
+        }
+        
+        .app:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 70px -30px var(--c)
+        }
+        
+        .app .shot {
+            position: relative;
+            height: 230px;
+            overflow: hidden;
+            background: var(--tint)
+        }
+        
+        .app .shot img {
+            position: absolute;
+            transition: transform .6s cubic-bezier(.2, 1, .3, 1)
+        }
+        
+        .app.mobile .shot img {
+            width: 150px;
+            left: 50%;
+            top: 26px;
+            transform: translateX(-50%);
+            border-radius: 22px;
+            box-shadow: 0 0 0 6px #0d0d10, 0 30px 50px -20px #000
+        }
+        
+        .app.mobile .shot img.side {
+            width: 120px;
+            top: 56px;
+            opacity: .85
+        }
+        
+        .app.mobile .shot img.l {
+            transform: translateX(-150%) rotate(-8deg)
+        }
+        
+        .app.mobile .shot img.r {
+            transform: translateX(50%) rotate(8deg)
+        }
+        
+        .app.desktop .shot img {
+            width: 88%;
+            left: 6%;
+            top: 28px;
+            border-radius: 10px;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, .12), 0 30px 60px -25px #000
+        }
+        
+        .app:hover .shot img {
+            transform: translateX(-50%) translateY(-8px) scale(1.02)
+        }
+        
+        .app:hover.desktop .shot img {
+            transform: translateY(-10px) scale(1.02)
+        }
+        
+        .app:hover .shot img.l {
+            transform: translateX(-160%) rotate(-12deg)
+        }
+        
+        .app:hover .shot img.r {
+            transform: translateX(60%) rotate(12deg)
+        }
+        
+        .app .body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 22px 24px 24px
+        }
+        
+        .app .top {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+        
+        .app .top img {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px
+        }
+        
+        .app h2 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.03em
+        }
+        
+        .app .plat {
+            margin-left: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--muted)
+        }
+        
+        .app p {
+            color: var(--muted);
+            font-size: 15.5px
+        }
+        
+        .app .go {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+            font-weight: 700;
+            color: var(--c)
+        }
+        
+        .app .go .icon {
+            transition: transform .2s
+        }
+        
+        .app:hover .go .icon {
+            transform: translateX(4px)
+        }
+        
+        .app.hide {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <div class="orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+    <header class="nav">
+        <div class="wrap"><a class="brand" href="./">Wealth Hajoh</a>
+            <nav class="nav-links"><a href="#apps">Apps</a></nav>
+        </div>
+    </header>
+    <main>
+        <section class="wrap h-hero">
+            <span class="eyebrow"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg> 7 apps · 3 for Android, 4 for Windows</span>
+            <h1>Apps that are <span class="grad">ready to install.</span></h1>
+            <p class="lead">Three for your phone, four for your PC. Each one has its own page with screenshots, everything it does, and a direct download.</p>
+            <h2 class="group-title" id="apps"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg> For your phone <span>Android · APK</span></h2>
+            <div class="grid three">
+                <a class="app mobile reveal" href="flowtask/" style="--c:#FF7A1A;--tint:radial-gradient(400px 220px at 50% 0%,#FF7A1A55,transparent 70%),#101014">
+                    <div class="shot" aria-hidden="true"><img class="side l" src="flowtask/img/board-dark.png" alt=""><img class="side r" src="flowtask/img/task.png" alt=""><img src="flowtask/img/home.png" alt=""></div>
+                    <div class="body">
+                        <div class="top"><img src="flowtask/img/icon.png" alt="">
+                            <h2>FlowTask</h2>
+                        </div>
+                        <p>Project boards your whole team actually opens.</p>
+                        <span class="go">View & download · 98 MB <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <a class="app mobile reveal" href="stockpilot/" style="--c:#1F7A63;--tint:radial-gradient(400px 220px at 50% 0%,#1F7A6355,transparent 70%),#101014">
+                    <div class="shot" aria-hidden="true"><img class="side l" src="stockpilot/img/scan.png" alt=""><img class="side r" src="stockpilot/img/product.png" alt=""><img src="stockpilot/img/home.png" alt=""></div>
+                    <div class="body">
+                        <div class="top"><img src="stockpilot/img/icon.png" alt="">
+                            <h2>StockPilot</h2>
+                        </div>
+                        <p>Stock control for small shops, run from your phone.</p>
+                        <span class="go">View & download · 118 MB <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <a class="app mobile reveal" href="scanly/" style="--c:#C6FF3D;--tint:radial-gradient(400px 220px at 50% 0%,#C6FF3D55,transparent 70%),#101014">
+                    <div class="shot" aria-hidden="true"><img class="side l" src="scanly/img/make-dark.jpg" alt=""><img class="side r" src="scanly/img/link-warning.jpg" alt=""><img src="scanly/img/wifi-scanned.jpg" alt=""></div>
+                    <div class="body">
+                        <div class="top"><img src="scanly/img/icon.png" alt="">
+                            <h2>Scanly</h2>
+                        </div>
+                        <p>Scan any code. Know what you're opening.</p>
+                        <span class="go">View & download · 125 MB <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+            </div>
+            <h2 class="group-title"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg> For your PC <span>Windows 10 & 11 · installer</span></h2>
+            <div class="grid four">
+                <a class="app desktop reveal" href="wallora/" style="--c:#7EB6FF;--tint:radial-gradient(400px 220px at 50% 0%,#7EB6FF55,transparent 70%),#101014">
+                    <div class="shot" aria-hidden="true"><img src="wallora/img/now.png" alt=""></div>
+                    <div class="body">
+                        <div class="top"><img src="wallora/img/icon.png" alt="">
+                            <h2>Wallora</h2>
+                        </div>
+                        <p>Your wallpapers, on shuffle.</p>
+                        <span class="go">View & download · 116 MB <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <a class="app desktop reveal" href="clipnest/" style="--c:#FFE45C;--tint:radial-gradient(400px 220px at 50% 0%,#FFE45C55,transparent 70%),#101014">
+                    <div class="shot" aria-hidden="true"><img src="clipnest/img/history-dark.jpg" alt=""></div>
+                    <div class="body">
+                        <div class="top"><img src="clipnest/img/icon.png" alt="">
+                            <h2>ClipNest</h2>
+                        </div>
+                        <p>Everything you copy, found again.</p>
+                        <span class="go">View & download · 2 MB <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <a class="app desktop reveal" href="sortify/" style="--c:#FF5A36;--tint:radial-gradient(400px 220px at 50% 0%,#FF5A3655,transparent 70%),#101014">
+                    <div class="shot" aria-hidden="true"><img src="sortify/img/builder.jpg" alt=""></div>
+                    <div class="body">
+                        <div class="top"><img src="sortify/img/icon.png" alt="">
+                            <h2>Sortify</h2>
+                        </div>
+                        <p>Messy folders in, tidy folders out.</p>
+                        <span class="go">View & download · 115 MB <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <a class="app desktop reveal" href="mediavault/" style="--c:#FF4B2B;--tint:radial-gradient(400px 220px at 50% 0%,#FF4B2B55,transparent 70%),#101014">
+                    <div class="shot" aria-hidden="true"><img src="mediavault/img/timeline.jpg" alt=""></div>
+                    <div class="body">
+                        <div class="top"><img src="mediavault/img/icon.png" alt="">
+                            <h2>MediaVault</h2>
+                        </div>
+                        <p>Every photo you've ever taken, on one timeline.</p>
+                        <span class="go">View & download · 116 MB <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer class="foot">
+        <div class="wrap"><span>© 2026 Wealth Hajoh</span><span>FlowTask · StockPilot · Scanly · Wallora · ClipNest · Sortify · MediaVault</span></div>
+    </footer>
+    <script src="config.js"></script>
+    <script src="assets/site.js"></script>
+</body>
+
+</html>

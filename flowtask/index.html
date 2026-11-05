@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlowTask: Project boards your whole team actually opens.</title>
+<meta name="description" content="FlowTask: project and task management for small teams, made for phones. Boards, assignments, @mentions, live sync and offline mode.">
+<meta property="og:title" content="FlowTask: Project boards your whole team actually opens.">
+<meta property="og:description" content="FlowTask: project and task management for small teams, made for phones. Boards, assignments, @mentions, live sync and offline mode.">
+<meta property="og:image" content="img/home.png">
+<meta name="theme-color" content="#FF7A1A">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:opsz,wght@9..40,400..700&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+:root{--bg:#1B1530;--bg-2:#150F27;--surface:#251C42;--text:#FFF6EA;--muted:#C9BFDD;--line:rgba(255,246,234,.14);--accent:#FF7A1A;--accent-ink:#1B1530;--accent-2:#8B5CF6;--card-border:2px solid #FFF6EA;--card-shadow:5px 5px 0 #8B5CF6;--btn-shadow:5px 5px 0 #FFF6EA;--btn-radius:18px;--radius:24px;--font-display:"Bricolage Grotesque",sans-serif;--font-body:"DM Sans",sans-serif;--star-bg:#FF7A1A;--final-bg:#FF7A1A}
+.btn{border-width:2px}.btn.primary{border:2px solid #FFF6EA}.btn.primary:active{box-shadow:0 0 0 #FFF6EA;transform:translate(5px,5px)}
+.feature.star{color:#1B1530}.feature.star p{color:#3B2A1C}.feature.star .f-icon{background:#1B1530;color:#FF7A1A}
+.final{color:#1B1530}.final p{color:#3B2A1C}.final .btn.primary{background:#1B1530;color:#FFF6EA;box-shadow:5px 5px 0 #FFF6EA;border-color:#1B1530}
+.f-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
+.f-hero h1 em{font-style:normal;display:inline-block;padding:0 14px;border:3px solid #1B1530;border-radius:18px;background:#FFD84D;color:#1B1530;transform:rotate(-2deg);box-shadow:5px 5px 0 #8B5CF6}
+.f-stage{position:relative;height:620px}
+.f-stage .phone{position:absolute;width:250px}
+.f-stage .p1{left:4%;top:60px;transform:rotate(-8deg);z-index:1}
+.f-stage .p2{left:30%;top:0;z-index:3}
+.f-stage .p3{right:0;top:80px;transform:rotate(8deg);z-index:2}
+.sticker{position:absolute;z-index:5;padding:10px 14px;border:2px solid #1B1530;border-radius:16px;font-weight:800;font-family:var(--font-display);box-shadow:4px 4px 0 #1B1530;animation:bob 4s ease-in-out infinite}
+.s1{background:#FFD84D;color:#1B1530;left:0;top:10px}.s2{background:#7CE0B5;color:#1B1530;right:4%;top:0;animation-delay:-1.3s}.s3{background:#FF8AC0;color:#1B1530;left:22%;bottom:30px;animation-delay:-2.6s}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-3deg)}}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.9}
+.b1{width:120px;height:120px;background:#8B5CF6;right:-30px;top:120px;border:3px solid #FFF6EA}
+.b2{width:70px;height:70px;background:#FFD84D;left:44%;bottom:-10px;border:3px solid #FFF6EA;border-radius:18px;transform:rotate(18deg)}
+@media(max-width:980px){.f-hero{grid-template-columns:1fr}.f-stage{height:560px;margin-top:20px}}
+@media(max-width:600px){.f-stage .p1,.f-stage .p3{display:none}.f-stage .p2{left:50%;transform:translateX(-50%)}}
+</style>
+</head>
+<body class="p-flowtask" data-platform="android">
+<header class="nav">
+  <div class="wrap">
+    <a class="back" href="../" aria-label="All apps"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span>All apps</span></a>
+    <a class="brand" href="#top"><img src="img/icon.png" alt="">FlowTask</a>
+    <nav class="nav-links"><a href="#features">Features</a><a href="#screens">Screenshots</a><a href="#install">Install</a></nav>
+    <a class="btn primary small" href="../downloads/Flowstack.apk" data-download="flowtask"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg> Download</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+<div class="wrap f-hero">
+  <div>
+    <span class="eyebrow"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg> For individuals and small teams</span>
+    <h1>Get the whole team <em>in flow</em>.</h1>
+    <p class="lead">Boards with your own workflow, tasks for teammates, @mentions and comments, and changes on everyone's phone in a second. Even offline.</p>
+    
+    <div class="cta-row">
+      <a class="btn primary" href="../downloads/Flowstack.apk" data-download="flowtask">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span class="btn-text">Download for Android<span class="sub">APK · v1.0.0 · 98 MB</span></span>
+      </a>
+      <a class="btn" href="#screens"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg> See screenshots</a>
+    </div>
+    <p class="fine">Android 8.0+ · Free · Installs outside the Play Store (here's how ↓)</p>
+    <div class="platform-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span></span></div>
+  </div>
+  <div class="f-stage" aria-hidden="true">
+    <span class="blob b1"></span><span class="blob b2"></span>
+    <span class="sticker s1">✓ 4 tasks done</span>
+    <span class="sticker s2">@Ada mentioned you</span>
+    <span class="sticker s3">🚀 Website relaunch</span>
+    <div class="phone p1"><img src="img/inbox.png" alt=""></div>
+    <div class="phone p2"><img src="img/home.png" alt=""></div>
+    <div class="phone p3"><img src="img/board-dark.png" alt=""></div>
+  </div>
+</div></section>
+
+<div class="wrap reveal">
+  <div class="facts"><div class="fact"><b>Android</b><span>APK · v1.0.0</span></div><div class="fact"><b>Live</b><span>Changes in under a second</span></div><div class="fact"><b>Offline</b><span>Edits queue up and sync</span></div><div class="fact"><b>Free</b><span>No ads, no tracking</span></div></div>
+</div>
+
+<section class="block" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">What it does</span><h2>Everything a small team needs. Nothing it doesn't.</h2></div>
+      <p>Project and task management for small teams, made for phones. Boards, assignments, @mentions, live sync and offline mode.</p>
+    </div>
+    <div class="features">
+      <article class="feature reveal star"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg></span><h3>Boards your way</h3><p>A column for every step of your workflow, or start from Simple, Team, Content or Bugs. Long-press a card to move it.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></span><h3>Built for teams</h3><p>Invite people with a 10-character code, set roles, and switch between workspaces.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg></span><h3>Talk it through</h3><p>Comments in chat bubbles, with @mentions that land in the right person's inbox.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg></span><h3>Never miss a thing</h3><p>Push notifications when you're assigned, mentioned, or a task you made is done.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/></svg></span><h3>Works offline</h3><p>Changes are saved on the phone first and sync the moment you're back online. Nothing is lost or applied twice.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><h3>Satisfying to finish</h3><p>Tap the big round checkbox: it pops, sends a burst of confetti and buzzes.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="screens">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">Screenshots</span><h2>See it before you install it.</h2></div>
+      <div class="gallery-nav"><button data-gallery-prev="g" aria-label="Previous screenshots"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button><button data-gallery-next="g" aria-label="Next screenshots"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button></div>
+    </div>
+    <div class="gallery mobile" id="g">
+      <figure><button data-zoom="img/home.png" aria-label="Enlarge: Home counts what's on your plate today"><div class="phone"><img src="img/home.png" alt="Home counts what's on your plate today" loading="lazy"></div></button><figcaption>Home counts what's on your plate today</figcaption></figure>
+      <figure><button data-zoom="img/board-dark.png" aria-label="Enlarge: A project board in dark mode"><div class="phone"><img src="img/board-dark.png" alt="A project board in dark mode" loading="lazy"></div></button><figcaption>A project board in dark mode</figcaption></figure>
+      <figure><button data-zoom="img/task.png" aria-label="Enlarge: Every detail of a task: checklist, labels, comments"><div class="phone"><img src="img/task.png" alt="Every detail of a task: checklist, labels, comments" loading="lazy"></div></button><figcaption>Every detail of a task: checklist, labels, comments</figcaption></figure>
+      <figure><button data-zoom="img/board.png" aria-label="Enlarge: Columns for every step of your workflow"><div class="phone"><img src="img/board.png" alt="Columns for every step of your workflow" loading="lazy"></div></button><figcaption>Columns for every step of your workflow</figcaption></figure>
+      <figure><button data-zoom="img/inbox.png" aria-label="Enlarge: Inbox: everything that's for you"><div class="phone"><img src="img/inbox.png" alt="Inbox: everything that's for you" loading="lazy"></div></button><figcaption>Inbox: everything that's for you</figcaption></figure>
+      <figure><button data-zoom="img/due.png" aria-label="Enlarge: Quick due dates and a calendar"><div class="phone"><img src="img/due.png" alt="Quick due dates and a calendar" loading="lazy"></div></button><figcaption>Quick due dates and a calendar</figcaption></figure>
+      <figure><button data-zoom="img/team.png" aria-label="Enlarge: Invite your team with a code"><div class="phone"><img src="img/team.png" alt="Invite your team with a code" loading="lazy"></div></button><figcaption>Invite your team with a code</figcaption></figure>
+      <figure><button data-zoom="img/new-project.png" aria-label="Enlarge: Start a project from a template"><div class="phone"><img src="img/new-project.png" alt="Start a project from a template" loading="lazy"></div></button><figcaption>Start a project from a template</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="install">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">Install</span><h2>Up and running in a minute.</h2></div>
+      <p>FlowTask isn't on the Play Store yet, so you install the APK directly. It takes three taps.</p>
+    </div>
+    <div class="install">
+      <ol class="steps reveal"><li><div><b>Download the APK</b><span>Tap the button on your Android phone. You'll get <span class="mono">Flowstack.apk</span>.</span></div></li><li><div><b>Allow the install</b><span>Android asks before installing apps from outside the Play Store. Tap Settings, allow your browser (or Files app) to install apps, then go back.</span></div></li><li><div><b>Open and install</b><span>Open the file from your notifications or Downloads and tap Install. Play Protect may ask you to confirm: choose “Install anyway”. Then open FlowTask.</span></div></li></ol>
+      <aside class="side-card reveal">
+        <h3>What you need</h3>
+        <ul class="req"><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Android 8.0 or newer</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Connects to a FlowTask server to sync with your team (you can point it at your own on the sign-in screen)</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>About 110 MB free space</span></li></ul>
+        <div>
+          <b style="font-size:14px">SHA-256 of Flowstack.apk</b>
+          <div class="hash mono" style="margin-top:8px"><span>f30480f0351ffce232b48d4876053e9de4e1fe3a46c7fee4c572f0e53469c907</span><button data-copy="f30480f0351ffce232b48d4876053e9de4e1fe3a46c7fee4c572f0e53469c907">Copy</button></div>
+        </div>
+        <div>
+          <b style="font-size:14px">Built with</b>
+          <div class="stack" style="margin-top:10px"><span>Expo SDK 58</span><span>React Native 0.88</span><span>Reanimated</span><span>Fastify 5</span><span>PostgreSQL 16</span><span>WebSockets</span></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="final reveal">
+      <h2>Ready to get in flow?</h2>
+      <p>Project boards your whole team actually opens. Free, v1.0.0, 98 MB.</p>
+      <div class="cta-row"><a class="btn primary" href="../downloads/Flowstack.apk" data-download="flowtask"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span class="btn-text">Download FlowTask<span class="sub">for Android · 98 MB</span></span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FlowTask · made by Wealth Hajoh</span>
+    <div class="others"><a href="../stockpilot/"><img src="../stockpilot/img/icon.png" alt="">StockPilot</a><a href="../scanly/"><img src="../scanly/img/icon.png" alt="">Scanly</a><a href="../wallora/"><img src="../wallora/img/icon.png" alt="">Wallora</a><a href="../clipnest/"><img src="../clipnest/img/icon.png" alt="">ClipNest</a><a href="../sortify/"><img src="../sortify/img/icon.png" alt="">Sortify</a><a href="../mediavault/"><img src="../mediavault/img/icon.png" alt="">MediaVault</a></div>
+  </div>
+</footer>
+<script src="../config.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

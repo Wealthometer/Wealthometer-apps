@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MediaVault: Every photo you've ever taken, on one timeline.</title>
+<meta name="description" content="MediaVault: a personal photo and video organiser for Windows. A visual timeline, automatic trip albums, EXIF details, duplicates, tags and an encrypted private vault.">
+<meta property="og:title" content="MediaVault: Every photo you've ever taken, on one timeline.">
+<meta property="og:description" content="MediaVault: a personal photo and video organiser for Windows. A visual timeline, automatic trip albums, EXIF details, duplicates, tags and an encrypted private vault.">
+<meta property="og:image" content="img/timeline.jpg">
+<meta name="theme-color" content="#FF4B2B">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Instrument+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+:root{--bg:#0C0B0A;--bg-2:#080706;--surface:#141210;--text:#F2ECE3;--muted:#A39B8F;--line:rgba(255,238,214,.09);--accent:#FF4B2B;--accent-ink:#160502;--accent-2:#FFB547;--accent-2-ink:#2A1505;--radius:18px;--card-border:1px solid rgba(255,238,214,.1);--font-display:"Fraunces",serif;--display-weight:600;--display-tracking:-0.03em;--font-body:"Instrument Sans",sans-serif;--btn-shadow:0 12px 40px -10px #FF4B2B;--star-bg:radial-gradient(500px 300px at 100% 0%,rgba(255,75,43,.18),transparent),#141210;--final-bg:radial-gradient(700px 400px at 50% 0%,rgba(255,75,43,.25),transparent),#141210}
+body{background:radial-gradient(1100px 700px at 50% -20%,rgba(255,75,43,.16),transparent 60%),#0C0B0A}
+h1 em,h2 em{font-style:italic;color:#FF4B2B;font-weight:500}
+.kicker{font-family:"Fraunces",serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:17px;font-weight:500}
+.mv-hero{text-align:center}
+.mv-hero .lead{margin:0 auto}.mv-hero .cta-row{justify-content:center}
+.mv-hero .fine,.mv-hero .platform-note{margin-left:auto;margin-right:auto;justify-content:center}
+.mv-hero h1{font-size:clamp(52px,8vw,112px)}
+.film{position:relative;margin:56px 0 0;padding:26px 0;background:#050403;overflow:hidden}
+.film::before,.film::after{content:"";position:absolute;left:0;right:0;height:12px;background:repeating-linear-gradient(90deg,transparent 0 14px,rgba(255,238,214,.18) 14px 26px,transparent 26px 34px);background-size:34px 12px}
+.film::before{top:7px}.film::after{bottom:7px}
+.film-track{display:flex;gap:16px;width:max-content;animation:roll 60s linear infinite}
+.film-track img{height:250px;width:auto;border-radius:4px;animation:develop 6s ease-in-out infinite;filter:sepia(.7) brightness(.45)}
+.film-track img:nth-child(3n){animation-delay:-2s}.film-track img:nth-child(3n+1){animation-delay:-4s}
+@keyframes roll{to{transform:translateX(-50%)}}
+@keyframes develop{0%,100%{filter:sepia(.8) brightness(.35)}40%,75%{filter:none}}
+.safelight{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:600px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,75,43,.35),transparent 65%);z-index:-1;animation:glow 5s ease-in-out infinite}
+@keyframes glow{50%{opacity:.6}}
+</style>
+</head>
+<body class="p-mediavault" data-platform="windows">
+<header class="nav">
+  <div class="wrap">
+    <a class="back" href="../" aria-label="All apps"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span>All apps</span></a>
+    <a class="brand" href="#top"><img src="img/icon.png" alt="">MediaVault</a>
+    <nav class="nav-links"><a href="#features">Features</a><a href="#screens">Screenshots</a><a href="#install">Install</a></nav>
+    <a class="btn primary small" href="../downloads/MediaVault-1.0.0-x64.exe" data-download="mediavault"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg> Download</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+<span class="safelight"></span>
+<div class="wrap mv-hero">
+  <span class="eyebrow"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg> Photo & video organiser for Windows</span>
+  <h1>Every photo you've ever taken,<br><em>on one timeline.</em></h1>
+  <p class="lead">Point MediaVault at your photo folders. It reads dates, cameras and places, finds your trips, spots duplicates and keeps watching for new pictures. Your files never move.</p>
+  
+    <div class="cta-row">
+      <a class="btn primary" href="../downloads/MediaVault-1.0.0-x64.exe" data-download="mediavault">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span class="btn-text">Download for Windows<span class="sub">Installer (.exe) · v1.0.0 · 116 MB</span></span>
+      </a>
+      <a class="btn" href="#screens"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg> See screenshots</a>
+    </div>
+    <p class="fine">Windows 10 & 11, 64-bit · Free · Not code-signed yet (here's how to install ↓)</p>
+    <div class="platform-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span></span></div>
+</div>
+<div class="film" aria-hidden="true"><div class="film-track"><img src="img/timeline.jpg" alt=""><img src="img/years.jpg" alt=""><img src="img/viewer.jpg" alt=""><img src="img/albums.jpg" alt=""><img src="img/date-range.jpg" alt=""><img src="img/duplicates.jpg" alt=""><img src="img/contact-sheet.jpg" alt=""><img src="img/timeline.jpg" alt=""><img src="img/years.jpg" alt=""><img src="img/viewer.jpg" alt=""><img src="img/albums.jpg" alt=""><img src="img/date-range.jpg" alt=""><img src="img/duplicates.jpg" alt=""><img src="img/contact-sheet.jpg" alt=""></div></div></section>
+
+<div class="wrap reveal">
+  <div class="facts"><div class="fact"><b>Windows</b><span>10 & 11 · 64-bit</span></div><div class="fact"><b>Timeline</b><span>Years → months → days</span></div><div class="fact"><b>Encrypted</b><span>AES-256 private vault</span></div><div class="fact"><b>In place</b><span>Your files never move</span></div></div>
+</div>
+
+<section class="block" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">What it does</span><h2>Your whole life in pictures, <em>in order.</em></h2></div>
+      <p>A personal photo and video organiser for Windows. A visual timeline, automatic trip albums, EXIF details, duplicates, tags and an encrypted private vault.</p>
+    </div>
+    <div class="features">
+      <article class="feature reveal star"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></span><h3>A timeline you can zoom</h3><p>Years at a glance as contact sheets, then months, then days. A film-strip scrubber down the side, and a density strip across the top: drag across it to see just that stretch of time.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg></span><h3>Trips, found for you</h3><p>MediaVault spots trips and events by when photos were taken, and names them from their folders.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span><h3>Every detail</h3><p>Date taken, camera, lens, exposure and GPS from EXIF, and recording dates from videos.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></span><h3>Duplicates and look-alikes</h3><p>Byte-for-byte copies, and resized or re-saved versions of the same picture.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg></span><h3>Tags, favourites, search</h3><p>Search names, tags, cameras, places and albums, with filters that combine.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><h3>A private vault</h3><p>Encrypted with your passphrase, hidden everywhere else. Videos still play straight from the vault.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="screens">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">Screenshots</span><h2>See it before you install it.</h2></div>
+      <div class="gallery-nav"><button data-gallery-prev="g" aria-label="Previous screenshots"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button><button data-gallery-next="g" aria-label="Next screenshots"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button></div>
+    </div>
+    <div class="gallery desktop" id="g">
+      <figure><button data-zoom="img/timeline.jpg" aria-label="Enlarge: The timeline, with its film-strip scrubber"><div class="window"><div class="bar"><i></i><i></i><i></i><span>MediaVault</span></div><img src="img/timeline.jpg" alt="The timeline, with its film-strip scrubber" loading="lazy"></div></button><figcaption>The timeline, with its film-strip scrubber</figcaption></figure>
+      <figure><button data-zoom="img/years.jpg" aria-label="Enlarge: Years at a glance"><div class="window"><div class="bar"><i></i><i></i><i></i><span>MediaVault</span></div><img src="img/years.jpg" alt="Years at a glance" loading="lazy"></div></button><figcaption>Years at a glance</figcaption></figure>
+      <figure><button data-zoom="img/date-range.jpg" aria-label="Enlarge: Drag across the strip to pick dates"><div class="window"><div class="bar"><i></i><i></i><i></i><span>MediaVault</span></div><img src="img/date-range.jpg" alt="Drag across the strip to pick dates" loading="lazy"></div></button><figcaption>Drag across the strip to pick dates</figcaption></figure>
+      <figure><button data-zoom="img/viewer.jpg" aria-label="Enlarge: The viewer, with EXIF and places"><div class="window"><div class="bar"><i></i><i></i><i></i><span>MediaVault</span></div><img src="img/viewer.jpg" alt="The viewer, with EXIF and places" loading="lazy"></div></button><figcaption>The viewer, with EXIF and places</figcaption></figure>
+      <figure><button data-zoom="img/albums.jpg" aria-label="Enlarge: Trips and events, found automatically"><div class="window"><div class="bar"><i></i><i></i><i></i><span>MediaVault</span></div><img src="img/albums.jpg" alt="Trips and events, found automatically" loading="lazy"></div></button><figcaption>Trips and events, found automatically</figcaption></figure>
+      <figure><button data-zoom="img/duplicates.jpg" aria-label="Enlarge: Duplicates and look-alikes"><div class="window"><div class="bar"><i></i><i></i><i></i><span>MediaVault</span></div><img src="img/duplicates.jpg" alt="Duplicates and look-alikes" loading="lazy"></div></button><figcaption>Duplicates and look-alikes</figcaption></figure>
+      <figure><button data-zoom="img/private-setup.jpg" aria-label="Enlarge: The encrypted Private vault"><div class="window"><div class="bar"><i></i><i></i><i></i><span>MediaVault</span></div><img src="img/private-setup.jpg" alt="The encrypted Private vault" loading="lazy"></div></button><figcaption>The encrypted Private vault</figcaption></figure>
+      <figure><button data-zoom="img/contact-sheet.jpg" aria-label="Enlarge: The “contact sheet” light theme"><div class="window"><div class="bar"><i></i><i></i><i></i><span>MediaVault</span></div><img src="img/contact-sheet.jpg" alt="The “contact sheet” light theme" loading="lazy"></div></button><figcaption>The “contact sheet” light theme</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="install">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">Install</span><h2>Up and running in a minute.</h2></div>
+      <p>MediaVault comes as a standard Windows installer. Here's the one extra click you'll need.</p>
+    </div>
+    <div class="install">
+      <ol class="steps reveal"><li><div><b>Download the installer</b><span>Click the button to get <span class="mono">MediaVault-1.0.0-x64.exe</span>.</span></div></li><li><div><b>Get past SmartScreen</b><span>The installer isn't code-signed yet, so Windows may say it “protected your PC”. Click More info, then Run anyway.</span></div></li><li><div><b>Install and go</b><span>Follow the installer. MediaVault lands in your Start menu, and you can pin it to the taskbar.</span></div></li></ol>
+      <aside class="side-card reveal">
+        <h3>What you need</h3>
+        <ul class="req"><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Windows 10 or 11, 64-bit</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>About 400 MB free space, plus room for thumbnails</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>JPEG, PNG, WebP, AVIF, GIF, HEIC (details), MP4, MOV, WebM and more</span></li></ul>
+        <div>
+          <b style="font-size:14px">SHA-256 of MediaVault-1.0.0-x64.exe</b>
+          <div class="hash mono" style="margin-top:8px"><span>d2a7398e8b779fda115744f415bda64d07aaac1556067a9e220584eb06340284</span><button data-copy="d2a7398e8b779fda115744f415bda64d07aaac1556067a9e220584eb06340284">Copy</button></div>
+        </div>
+        <div>
+          <b style="font-size:14px">Built with</b>
+          <div class="stack" style="margin-top:10px"><span>Electron 44</span><span>React 19</span><span>TypeScript</span><span>SQLite</span><span>AES-256-GCM</span></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="final reveal">
+      <h2>Open the <em>vault.</em></h2>
+      <p>Every photo you've ever taken, on one timeline. Free, v1.0.0, 116 MB.</p>
+      <div class="cta-row"><a class="btn primary" href="../downloads/MediaVault-1.0.0-x64.exe" data-download="mediavault"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span class="btn-text">Download MediaVault<span class="sub">for Windows · 116 MB</span></span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>MediaVault · made by Wealth Hajoh</span>
+    <div class="others"><a href="../flowtask/"><img src="../flowtask/img/icon.png" alt="">FlowTask</a><a href="../stockpilot/"><img src="../stockpilot/img/icon.png" alt="">StockPilot</a><a href="../scanly/"><img src="../scanly/img/icon.png" alt="">Scanly</a><a href="../wallora/"><img src="../wallora/img/icon.png" alt="">Wallora</a><a href="../clipnest/"><img src="../clipnest/img/icon.png" alt="">ClipNest</a><a href="../sortify/"><img src="../sortify/img/icon.png" alt="">Sortify</a></div>
+  </div>
+</footer>
+<script src="../config.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

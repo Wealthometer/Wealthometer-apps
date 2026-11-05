@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scanly: Scan any code. Know what you're opening.</title>
+<meta name="description" content="Scanly: QR and barcode scanner and QR code maker for Android. Link safety checks, Wi-Fi codes, styled QR codes, PNG and SVG export.">
+<meta property="og:title" content="Scanly: Scan any code. Know what you're opening.">
+<meta property="og:description" content="Scanly: QR and barcode scanner and QR code maker for Android. Link safety checks, Wi-Fi codes, styled QR codes, PNG and SVG export.">
+<meta property="og:image" content="img/wifi-scanned.jpg">
+<meta name="theme-color" content="#C6FF3D">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500..800&family=Space+Grotesk:wght@400..700&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+:root{--bg:#0A0C1B;--bg-2:#070914;--surface:#12152B;--text:#F2F5FF;--muted:#9CA3C7;--line:rgba(198,255,61,.14);--accent:#C6FF3D;--accent-ink:#0A0C1B;--accent-2:#9B5CFF;--radius:22px;--card-border:1px solid rgba(242,245,255,.1);--font-display:"Sora",sans-serif;--font-body:"Space Grotesk",sans-serif;--btn-shadow:0 0 0 1px #C6FF3D,0 0 40px -6px #C6FF3D;--btn-radius:999px;--star-bg:linear-gradient(135deg,#1C1440,#12152B 60%);--final-bg:radial-gradient(600px 300px at 50% 0%,rgba(198,255,61,.22),transparent),#12152B}
+body{background:radial-gradient(900px 600px at 80% -10%,rgba(155,92,255,.28),transparent 60%),radial-gradient(700px 500px at -10% 30%,rgba(61,255,176,.12),transparent 60%),#0A0C1B}
+.q-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
+.q-hero h1 .lime{color:#C6FF3D;text-shadow:0 0 40px rgba(198,255,61,.45)}
+.q-stage{position:relative;height:620px;display:grid;place-items:center}
+.q-stage .phone{width:280px;z-index:2}
+.viewfinder{position:absolute;inset:18% 16% 30% 16%;z-index:3;pointer-events:none}
+.viewfinder i{position:absolute;width:42px;height:42px;border:4px solid #C6FF3D;filter:drop-shadow(0 0 10px #C6FF3D)}
+.viewfinder i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-radius:14px 0 0 0}
+.viewfinder i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-radius:0 14px 0 0}
+.viewfinder i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 14px}
+.viewfinder i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 14px 0}
+.viewfinder .beam{position:absolute;left:4%;right:4%;height:3px;border-radius:2px;background:#C6FF3D;box-shadow:0 0 24px 4px rgba(198,255,61,.6);animation:beam 2.6s ease-in-out infinite}
+@keyframes beam{0%,100%{top:6%}50%{top:92%}}
+.qr-bg{position:absolute;width:520px;height:520px;opacity:.12;background:conic-gradient(from 0deg,#C6FF3D,#9B5CFF,#3DFFB0,#C6FF3D);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21'%3E%3Cpath d='M0 0h7v7H0zM14 0h7v7h-7zM0 14h7v7H0zM9 0h2v2H9zM9 4h3v2H9zM12 9h2v3h-2zM9 9h2v2H9zM16 9h3v2h-3zM9 14h2v4H9zM13 13h3v3h-3zM18 16h3v2h-3zM15 18h2v3h-2zM11 19h2v2h-2z'/%3E%3C/svg%3E") center/contain no-repeat;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chip-float{position:absolute;z-index:4;display:flex;gap:10px;align-items:center;padding:12px 16px;border-radius:16px;background:rgba(18,21,43,.85);backdrop-filter:blur(10px);border:1px solid rgba(198,255,61,.3);font-weight:700;font-size:14.5px;animation:float 5s ease-in-out infinite}
+.chip-float .icon{color:#C6FF3D}
+.c1{left:0;top:110px}.c2{right:0;bottom:120px;animation-delay:-2.5s}
+.c2 .icon{color:#FF7A9A}
+@keyframes float{50%{transform:translateY(-10px)}}
+@media(max-width:980px){.q-hero{grid-template-columns:1fr}}
+@media(max-width:600px){.chip-float{display:none}}
+</style>
+</head>
+<body class="p-scanly" data-platform="android">
+<header class="nav">
+  <div class="wrap">
+    <a class="back" href="../" aria-label="All apps"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span>All apps</span></a>
+    <a class="brand" href="#top"><img src="img/icon.png" alt="">Scanly</a>
+    <nav class="nav-links"><a href="#features">Features</a><a href="#screens">Screenshots</a><a href="#install">Install</a></nav>
+    <a class="btn primary small" href="../downloads/scanly.apk" data-download="scanly"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg> Download</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+<div class="wrap q-hero">
+  <div>
+    <span class="eyebrow"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></svg> Scanner + QR code maker</span>
+    <h1>Scan anything. <span class="lime">Trust</span> what you open.</h1>
+    <p class="lead">Point your camera at any QR code or barcode and Scanly tells you what it is, where a link really goes, and what you can do with it. Then make beautiful codes of your own.</p>
+    
+    <div class="cta-row">
+      <a class="btn primary" href="../downloads/scanly.apk" data-download="scanly">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span class="btn-text">Download for Android<span class="sub">APK · v1.0.0 · 125 MB</span></span>
+      </a>
+      <a class="btn" href="#screens"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg> See screenshots</a>
+    </div>
+    <p class="fine">Android 8.0+ · Free · Installs outside the Play Store (here's how ↓)</p>
+    <div class="platform-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span></span></div>
+  </div>
+  <div class="q-stage" aria-hidden="true">
+    <span class="qr-bg"></span>
+    <div class="chip-float c1"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg> Wi-Fi password copied</div>
+    <div class="chip-float c2"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg> Lookalike link blocked</div>
+    <div class="phone"><img src="img/make-dark.jpg" alt=""></div>
+    <div class="viewfinder"><i></i><i></i><i></i><i></i><span class="beam"></span></div>
+  </div>
+</div></section>
+
+<div class="wrap reveal">
+  <div class="facts"><div class="fact"><b>Android</b><span>APK · v1.0.0</span></div><div class="fact"><b>13 formats</b><span>QR, Data Matrix, EAN, UPC…</span></div><div class="fact"><b>8 code types</b><span>Link, Wi-Fi, contact, more</span></div><div class="fact"><b>PNG + SVG</b><span>Up to 2048 px, or vector</span></div></div>
+</div>
+
+<section class="block" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">What it does</span><h2>More than a scanner.</h2></div>
+      <p>QR and barcode scanner and QR code maker for Android. Link safety checks, Wi-Fi codes, styled QR codes, PNG and SVG export.</p>
+    </div>
+    <div class="features">
+      <article class="feature reveal star"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Links you can trust</h3><p>Scanly shows where a link really goes, in big letters, and warns about lookalike letters, shorteners, bare IPs and unencrypted http.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg></span><h3>Reads everything</h3><p>QR, Data Matrix, Aztec, PDF417 and every common barcode. Scan from the camera, a screenshot, or type it.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg></span><h3>Wi-Fi in a tap</h3><p>Passwords stay hidden until you tap the eye, and one tap copies them.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg></span><h3>Codes that look good</h3><p>Seven themes, gradients, dot and corner shapes, and a centre badge like “WIFI” or “MENU”. They still scan.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span><h3>Export for print</h3><p>Save PNGs at 512 to 2048 px, or an SVG that's identical at any size.</p></article>
+      <article class="feature reveal"><span class="f-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg></span><h3>History that's useful</h3><p>Everything you scan or make, grouped by day, searchable, starred, and exportable as CSV.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="screens">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">Screenshots</span><h2>See it before you install it.</h2></div>
+      <div class="gallery-nav"><button data-gallery-prev="g" aria-label="Previous screenshots"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button><button data-gallery-next="g" aria-label="Next screenshots"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button></div>
+    </div>
+    <div class="gallery mobile" id="g">
+      <figure><button data-zoom="img/wifi-scanned.jpg" aria-label="Enlarge: A scanned Wi-Fi code, password one tap away"><div class="phone"><img src="img/wifi-scanned.jpg" alt="A scanned Wi-Fi code, password one tap away" loading="lazy"></div></button><figcaption>A scanned Wi-Fi code, password one tap away</figcaption></figure>
+      <figure><button data-zoom="img/make-dark.jpg" aria-label="Enlarge: Designing a Wi-Fi code, live"><div class="phone"><img src="img/make-dark.jpg" alt="Designing a Wi-Fi code, live" loading="lazy"></div></button><figcaption>Designing a Wi-Fi code, live</figcaption></figure>
+      <figure><button data-zoom="img/link-warning.jpg" aria-label="Enlarge: A link that isn't what it seems"><div class="phone"><img src="img/link-warning.jpg" alt="A link that isn't what it seems" loading="lazy"></div></button><figcaption>A link that isn't what it seems</figcaption></figure>
+      <figure><button data-zoom="img/style.jpg" aria-label="Enlarge: Themes, gradients, shapes and badges"><div class="phone"><img src="img/style.jpg" alt="Themes, gradients, shapes and badges" loading="lazy"></div></button><figcaption>Themes, gradients, shapes and badges</figcaption></figure>
+      <figure><button data-zoom="img/history-dark.jpg" aria-label="Enlarge: Everything you've scanned and made"><div class="phone"><img src="img/history-dark.jpg" alt="Everything you've scanned and made" loading="lazy"></div></button><figcaption>Everything you've scanned and made</figcaption></figure>
+      <figure><button data-zoom="img/code-dark.jpg" aria-label="Enlarge: Your code, ready to share or print"><div class="phone"><img src="img/code-dark.jpg" alt="Your code, ready to share or print" loading="lazy"></div></button><figcaption>Your code, ready to share or print</figcaption></figure>
+      <figure><button data-zoom="img/product.jpg" aria-label="Enlarge: Barcodes look up the product"><div class="phone"><img src="img/product.jpg" alt="Barcodes look up the product" loading="lazy"></div></button><figcaption>Barcodes look up the product</figcaption></figure>
+      <figure><button data-zoom="img/contact-dark.jpg" aria-label="Enlarge: Contact cards become contacts"><div class="phone"><img src="img/contact-dark.jpg" alt="Contact cards become contacts" loading="lazy"></div></button><figcaption>Contact cards become contacts</figcaption></figure>
+      <figure><button data-zoom="img/create-dark.jpg" aria-label="Enlarge: Eight kinds of code to make"><div class="phone"><img src="img/create-dark.jpg" alt="Eight kinds of code to make" loading="lazy"></div></button><figcaption>Eight kinds of code to make</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="install">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="kicker">Install</span><h2>Up and running in a minute.</h2></div>
+      <p>Scanly isn't on the Play Store yet, so you install the APK directly. It takes three taps.</p>
+    </div>
+    <div class="install">
+      <ol class="steps reveal"><li><div><b>Download the APK</b><span>Tap the button on your Android phone. You'll get <span class="mono">scanly.apk</span>.</span></div></li><li><div><b>Allow the install</b><span>Android asks before installing apps from outside the Play Store. Tap Settings, allow your browser (or Files app) to install apps, then go back.</span></div></li><li><div><b>Open and install</b><span>Open the file from your notifications or Downloads and tap Install. Play Protect may ask you to confirm: choose “Install anyway”. Then open Scanly.</span></div></li></ol>
+      <aside class="side-card reveal">
+        <h3>What you need</h3>
+        <ul class="req"><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Android 8.0 or newer</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A camera to scan (picking a screenshot works too)</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>About 140 MB free space</span></li></ul>
+        <div>
+          <b style="font-size:14px">SHA-256 of scanly.apk</b>
+          <div class="hash mono" style="margin-top:8px"><span>fdfc4f81253765157c97ff0c6e84aa00116b250c372a3e84d6d3947d17126592</span><button data-copy="fdfc4f81253765157c97ff0c6e84aa00116b250c372a3e84d6d3947d17126592">Copy</button></div>
+        </div>
+        <div>
+          <b style="font-size:14px">Built with</b>
+          <div class="stack" style="margin-top:10px"><span>Expo SDK 58</span><span>React Native 0.88</span><span>Expo Router</span><span>Expo Camera</span><span>SVG renderer</span></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="final reveal">
+      <h2>Point. Scan. Know.</h2>
+      <p>Scan any code. Know what you're opening. Free, v1.0.0, 125 MB.</p>
+      <div class="cta-row"><a class="btn primary" href="../downloads/scanly.apk" data-download="scanly"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span class="btn-text">Download Scanly<span class="sub">for Android · 125 MB</span></span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>Scanly · made by Wealth Hajoh</span>
+    <div class="others"><a href="../flowtask/"><img src="../flowtask/img/icon.png" alt="">FlowTask</a><a href="../stockpilot/"><img src="../stockpilot/img/icon.png" alt="">StockPilot</a><a href="../wallora/"><img src="../wallora/img/icon.png" alt="">Wallora</a><a href="../clipnest/"><img src="../clipnest/img/icon.png" alt="">ClipNest</a><a href="../sortify/"><img src="../sortify/img/icon.png" alt="">Sortify</a><a href="../mediavault/"><img src="../mediavault/img/icon.png" alt="">MediaVault</a></div>
+  </div>
+</footer>
+<script src="../config.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
